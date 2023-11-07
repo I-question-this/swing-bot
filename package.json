@@ -4,7 +4,8 @@
   "description": "A discord bot that swings",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "testing=TRUE node index.js"
   },
   "repository": {
     "type": "git",

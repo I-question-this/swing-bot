@@ -2,7 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 // Require the necessary discord.js classes
 const { Client, Events, GatewayIntentBits, Guild } = require('discord.js');
-const { token } = require('./config.json');
+const { token, testToken } = require('./config.json');
 
 // Create a new client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages] });
@@ -20,5 +20,10 @@ for (const file of eventFiles) {
 	}
 }
 
-// Log in to Discord with your client's token
-client.login(token);
+if (process.env.testing == "TRUE") {
+    console.log("Using test token.")
+    client.login(testToken);
+} else {
+    console.log("Using production token.")
+    client.login(token);
+}
